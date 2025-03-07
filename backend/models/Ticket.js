@@ -1,28 +1,28 @@
-const { DataType } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const db = require('../config/db.js');
 const User = require('./User.js');
 const Event = require('./Event.js');
 
 const Ticket = db.define('Ticket', {
     ticketID: {
-        type: DataType.INTEGER,
+        type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
 
     },
     status: {
-        type: DataType.ENUM('PAID', 'UNPAID'),
+        type: DataTypes.ENUM('PAID', 'UNPAID'),
         defaultValue: 'UNPAID',
         allowNull: false,
 
     },
     purchaseDate: {
-        type: DataType.DATE,
+        type: DataTypes.DATE,
         allowNull: true,
 
     },
     userID: {
-        type: DataType.INTEGER,
+        type: DataTypes.INTEGER,
         reference: {
             model: 'User',
             key: 'userID',
@@ -30,14 +30,15 @@ const Ticket = db.define('Ticket', {
         allowNull: false
     },
     eventID: {
-        type: DataType.INTEGER,
+        type: DataTypes.INTEGER,
         reference: {
             model: 'Event',
             key: 'eventID',
         },
         allowNull: false
-    }
+    },
+
 
 }, { timestamps: true })
 
-module.exports = Ticket
+module.exports = Ticket;

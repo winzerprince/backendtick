@@ -1,20 +1,20 @@
-const { DataType } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const db = require('../config/db.js');
 
 const User = db.define('User', {
     userID: {
-        type: DataType.INTEGER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
 
     },
     name: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
 
     },
     email: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
         validate: {
             isEmail: true,
@@ -22,18 +22,18 @@ const User = db.define('User', {
         unique: true
     },
     phoneNumber: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
         unique: true,
         allowNull: false
     },
     password: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
 
 
     },
     qrCode: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
         validate: {
             is: /\.(png)$/i,
         }

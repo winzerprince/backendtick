@@ -4,7 +4,7 @@ const createUser = async (req, res) => {
     try {
         const { name, email, phoneNumber, password, qrCode } = req.body;
         const newUser = await User.create({ name, email, phoneNumber, password, qrCode });
-        res.status(200).json(newUser);
+        res.status(201).json(newUser);
     }
     catch (err) {
         console.error('Error: ', err);

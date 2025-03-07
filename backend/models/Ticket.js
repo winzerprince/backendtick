@@ -24,7 +24,7 @@ const Ticket = db.define('Ticket', {
     userID: {
         type: DataTypes.INTEGER,
         reference: {
-            model: 'User',
+            model: User,
             key: 'userID',
         },
         allowNull: false
@@ -32,7 +32,7 @@ const Ticket = db.define('Ticket', {
     eventID: {
         type: DataTypes.INTEGER,
         reference: {
-            model: 'Event',
+            model: Event,
             key: 'eventID',
         },
         allowNull: false

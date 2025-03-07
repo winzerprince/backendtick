@@ -18,7 +18,7 @@ const getUser = async (req, res) => {
         const { id } = req.params;
         const user = await User.findByPk(id);
         if (!user) return res.status(404).json({ message: 'User not found in Database' });
-        res.status(200).json(mission);
+        res.status(200).json(user);
     }
     catch (err) {
         console.error('Error: ', err);
@@ -43,9 +43,10 @@ const updateUser = async (req, res) => {
     try {
         const { id } = req.params;
         const { name, email, phoneNumber, password, qrCode } = req.body;
-        const user = await User.findByPk(id);
+        let user = await User.findByPk(id);
         if (!user) return res.status(404).json({ message: 'User not found in database' });
-        await User.update({ name, email, phoneNumber, password, qrCode }, { where: { id: id } });
+        await User.update({ name, email, phoneNumber, password, qrCode }, { where: { userID: id } });
+        user = await User.findByPk(id);
         res.status(200).json(user);
     }
     catch (err) {
@@ -70,10 +71,23 @@ const deleteUser = async (req, res) => {
     }
 }
 
+const deleteUsers = async (req, res) => {
+    try {
+        const result = await User.destroy({ where: {}, truncate: true });
+        res.status(200).json({ message: 'Users deleted' });
+
+
+    }
+    catch (err) {
+        console.error('Error: ', err);
+        res.status(500).json({ message: 'Failed to delete users' })
+    }
+}
 module.exports = {
     createUser,
     getUser,
     getUsers,
     updateUser,
     deleteUser,
+    deleteUsers,
 }

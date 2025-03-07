@@ -2,9 +2,9 @@ const Ticket = require('../models/Ticket.js');
 
 const createTicket = async (req, res) => {
     try {
-        const { EventID, userID } = req.body;
-        const ticket = await Ticket.create({ EventID, userID })
-        res.status(201).json(newMission);
+        const { eventID, userID } = req.body;
+        const ticket = await Ticket.create({ eventID, userID })
+        res.status(201).json(ticket);
     }
     catch (err) {
         console.error('Error: ', err);
@@ -46,9 +46,10 @@ const updateTicket = async (req, res) => {
     try {
         const { id } = req.params;
         const { eventID, userID, status, purchaseDate } = req.body;
-        const ticket = await Ticket.findByPk(id);
+        let ticket = await Ticket.findByPk(id);
         if (!ticket) return res.status(404).json({ message: 'Ticket not found in databaase' });
-        await Ticket.update({ eventID, userID, status, purchaseDate }, { where: { id: id } })
+        await Ticket.update({ eventID, userID, status, purchaseDate }, { where: { ticketID: id } })
+        ticket = await Ticket.findByPk(id);
         res.status(200).json(ticket);
     }
     catch (err) {

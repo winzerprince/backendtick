@@ -1,9 +1,9 @@
-const { DataTypes } = require('sequelize');
-const db = require('../config/db.js'); 
-const User = require('./User'); 
-const { Model } = require('sequelize');
+const { DataTypes, Model } = require('sequelize');
+const db = require('../config/db.js');
+const User = require('./User');
 
 
+class Payment extends Model { }
 
 Payment.init(
   {
@@ -14,12 +14,12 @@ Payment.init(
     },
 
     amount: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10, 2),
       allowNull: true,
     },
 
     paymentData: {
-      type: DataTypes.STRING, 
+      type: DataTypes.STRING,
       allowNull: false,
     },
 
@@ -39,7 +39,7 @@ Payment.init(
     },
   },
   {
-    sequelize,
+    sequelize: db,
     modelName: 'Payment',
     tableName: 'payments',
     timestamps: true, // Adds createdAt and updatedAt timestamps

@@ -74,7 +74,7 @@ const deletePayment = async (req, res) => {
     }
 }
 
-module.export = {
+module.exports = {
     createPayment,
     getPayment,
     getPayments,

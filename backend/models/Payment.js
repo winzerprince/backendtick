@@ -1,8 +1,9 @@
 const { DataTypes } = require('sequelize');
-const db = require('../config/database'); 
+const db = require('../config/db.js'); 
 const User = require('./User'); 
+const { Model } = require('sequelize');
 
-class Payment extends Model {}
+
 
 Payment.init(
   {
@@ -14,7 +15,7 @@ Payment.init(
 
     amount: {
       type: DataTypes.DECIMAL,
-      allowNull: false,
+      allowNull: true,
     },
 
     paymentData: {

@@ -74,7 +74,7 @@ const deleteUser = async (req, res) => {
 const deleteUsers = async (req, res) => {
     try {
         const result = await User.destroy({ where: {}, truncate: true });
-        res.status(200).json({ message: 'Users deleted' });
+        res.status(200).json({ message: 'Users deleted' }, result);
 
 
     }

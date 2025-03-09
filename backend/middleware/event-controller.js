@@ -32,7 +32,7 @@ const getEvent = async (req, res) => {
 
 const getEvents = async (req, res) => {
     try {
-        const events = await Events.findAll();
+        const events = await Event.findAll();
         res.status(200).json(events);
 
     }
@@ -63,7 +63,7 @@ const deleteEvent = async (req, res) => {
     try {
         const { id } = req.params;
         const event = await Event.findByPk(id);
-        event.destroy();
+        await event.destroy();
         res.status(200).json({ message: 'Event deleted' });
 
     }

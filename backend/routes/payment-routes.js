@@ -2,6 +2,7 @@ const express = require('express');
 const paymentController = require('../middleware/payment-controller.js');
 const router = express.Router();
 
+// CRUD operations for payments
 router.post('/', paymentController.createPayment);
 router.get('/:id', paymentController.getPayment);
 router.get('/', paymentController.getPayments);

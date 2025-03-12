@@ -1,8 +1,6 @@
 require('dotenv').config()
 const { Sequelize } = require('sequelize');
 
-
-
 const sequelize = new Sequelize('tick', 'ticker', 'mysql123!@#', {
 
     host: 'localhost',
@@ -18,3 +16,4 @@ sequelize.authenticate()
 
 
 module.exports = sequelize;
+

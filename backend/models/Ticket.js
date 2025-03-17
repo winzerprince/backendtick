@@ -3,6 +3,7 @@ const db = require('../config/db.js');
 const User = require('./User.js');
 const Event = require('./Event.js');
 
+// Definition for the tickets table
 const Ticket = db.define('Ticket', {
     ticketID: {
         type: DataTypes.INTEGER,

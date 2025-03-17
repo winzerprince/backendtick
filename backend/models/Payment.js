@@ -2,7 +2,7 @@ const { DataTypes, Model } = require('sequelize');
 const db = require('../config/db.js');
 const User = require('./User');
 
-
+// Definition for the payments table
 class Payment extends Model { }
 
 Payment.init(

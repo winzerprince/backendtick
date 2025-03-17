@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const db = require('../config/db.js');
-
+// Definition for the events table
 const Event = db.define('Event', {
     eventId: {
         type: DataTypes.INTEGER,
